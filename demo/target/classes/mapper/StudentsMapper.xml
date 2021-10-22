@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StudentsMapper">
+    <resultMap id="result" type="com.example.demo.entity.Students">
+        <result column="no" jdbcType="INTEGER" property="no" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+    </resultMap>
+
+    <select id="findAllStudent" resultType="com.example.demo.entity.Students">
+        select  * from students;
+    </select>
+
+    <select id="findStudentByno" resultType="com.example.demo.entity.Students">
+        select * from students where no=#{no};
+    </select>
+    <select id="findStudentByname" resultType="com.example.demo.entity.Students">
+        select * from students where name=#{name};
+    </select>
+
+    <insert id="insertStudent" parameterType="com.example.demo.entity.Students" keyProperty="no" useGeneratedKeys="true">
+        insert into students(name,age) values (#{name},#{age});
+    </insert>
+
+    <update id="updateStudent" parameterType="com.example.demo.entity.Students">
+        update students set name=#{name},age=#{age} where no=#{no};
+    </update>
+
+    <delete id="deleteStudent" parameterType="com.example.demo.entity.Students">
+        delete from  where no=#{no};
+    </delete>
+</mapper>
+
+
+
+
